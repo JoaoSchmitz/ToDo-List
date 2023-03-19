@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-decoration: none;
+  -webkit-text-stroke: 0.1px black;
+  font-size: 1.3rem;
+  font-family: 'EB Garamond', serif;
+}
+
+/* Color scheme */
+:root {
+  --main-color: linear-gradient(
+    90deg,
+    rgb(11, 148, 107) 0%,
+    rgb(41, 46, 99) 100%
+  );
+  --button-color: linear-gradient(
+    90deg,
+    var(--detail-color2) 0%,
+    var(--detail-color) 100%
+  );
+  --bg-color: #06192e;
+  --task-color: rgb(126, 126, 126);
+  --task-color2: rgba(31, 134, 148, 0.692);
+  --detail-color: rgb(0, 179, 250);
+  --detail-color2: rgb(6, 76, 85);
+}
+
+/* Custom scrollbar */
+*::-webkit-scrollbar {
+  width: 15px;             /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--detail-color2);        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--detail-color);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid var(--detail-color2);  /* creates padding around scroll thumb */
+}
+
+body {
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 10px; 
+  font-size: 3rem;
+}
+
+.todo-list-wrapper {
+  margin-top: 50px;
+  width: 50em;
+  max-width: 50em;
+  height: 32.5em;
+  max-height: 32.5em;
+  border: 5px double var(--detail-color);
+  border-radius: 0px 20px 0px 20px;
+  background: var(--main-color)
+}
+
+.horizontal-line {
+  height: 2px;
+  width: 60%;
+  margin-left: 10em;
+  margin-top: 10px;
+  background: var(--detail-color);
+  border-radius: 30px;
+}
+
+.horizontal-line-2{
+  height: 2px;
+  width: 40%;
+  margin-left: 14.9em;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background: var(--detail-color);
+  border-radius: 30px;
+}
+
+/* Task component */
+.task-box-container {
+  max-width: 80%;
+  margin-left: 5em;
+  margin-top: 20px;
+  min-height: 61%;
+  max-height: 61%;
+  padding-right: 5px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.task-box {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  background: rgb(126, 126, 126);
+  padding: 8px;
+  border: 3px double var(--detail-color);
+  border-radius: 20px 0px 0px 20px;
+  transition: .8s;
+}
+
+.task-box + .task-box {
+  margin-top: 10px;
+}
+
+.complete {
+  transition: .8s;
+  text-decoration: line-through;
+  text-decoration-color: var(--detail-color2);
+  background-color: var(--task-color2);
+}
+
+.icons {
+  padding-top: 5px;
+}
+
+.icons :hover {
+  transition: .4s;
+  color: var(--detail-color);
+}
+
+.complete-icon {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.delete-icon {
+  margin-right: 5px;
+}
+
+.edit-icon {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Form component */
+.task-form {
+  max-width: 80%;
+  margin-left: 5em;
+  padding-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-input {
+  padding: 14px 32px 14px 16px;
+  border-radius: 4px 0 0 4px;
+  border: 2px solid var(--detail-color2);
+  outline: none;
+  width: 320px;
+  background: transparent;
+  color: #fff;
+}
+
+.task-input::placeholder {
+  color: #e2e2e2;
+}
+
+.task-button {
+  padding: 16px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  outline: none;
+  background: var(--button-color);
+  color: #fff;
+}
+
+.input-edit {
+  border: 2px solid var(--detail-color2);
+  margin-top: 100px;
+}
+
+.button-edit {
+  background: var(--button-color);
+  padding: 16px 22px;
+  margin-top: 100px;
+}
+
+/* Confirm component */
+.confirm-box {
+  background: var(--main-color);
+  text-align: center;
+  border: 5px double var(--detail-color);
+  border-radius: 0px 20px 0px 20px;
+  padding: 10px;
+  position: fixed;
+  top: 45%;
+  left: 41%;
+  right: 41%;
+}
+
+.confirm-button-container {
+  background: transparent;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+.confirm-button {
+  background: var(--button-color);
+  border-radius: 20px;
+  border: 2px solid var(--detail-color);
+  padding: 5px;
+  width: 120px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.confirm-button:hover {
+  transition: .4s;
+  transform: translateX(6px);
+}
+
+.outside-confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Clearing all tasks */
+.clear-button {
+  position: fixed;
+  top: 87%;
+  left: 60%;
+  padding: 10px;
+  width: 350px;
+  text-align: center;
+  border: none;
+  border: 3px double var(--detail-color);
+  border-radius: 0px 20px 0px 20px;
+  background: var(--button-color);
+  cursor: pointer;
+  color: #fff;
+}
